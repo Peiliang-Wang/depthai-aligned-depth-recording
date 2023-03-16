@@ -1,4 +1,4 @@
-# depthai-video-recording
+# depthai-aligned-depth-recording 
 
 ```
 Record RGB and aligned depth with DepthAI OAK-D
@@ -7,8 +7,10 @@ options:
   -h, --help      show this help message and exit
   -p, --preview   Show preview, nothing will be recorded
   -o, --out       Output directory path, default value is "output"
+  -m , --mode     Depth mode: ["density", "accuracy"], default value is "density"
   -s, --subpixel  Enable subpixel disparity
   -e, --extended  Enable extended disparity
+  -f, --fps       Specify FPS, default value is "30"
   --rgbres        RGB camera resolution: ["12mp", "4k", "1080p"], default value is "1080p"
   --monores       Mono camera resolution: ["800p", "720p", "400p"], default value is "720p"
 ```

@@ -11,7 +11,8 @@ if __name__ == "__main__":
   # Init
   print("Init...")
   cliArgs = parseCli()
-  recorder = Recorder(cliArgs.rgbres, cliArgs.monores, 30)
+  recorder = Recorder(cliArgs.rgbres, cliArgs.monores, cliArgs.fps,
+                      cliArgs.mode)
   if cliArgs.preview:
     recorder.preview(cliArgs.subpixel, cliArgs.extended)
   else:

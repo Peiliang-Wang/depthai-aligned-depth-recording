@@ -9,7 +9,7 @@ from pathlib import Path
 
 class Recorder():
 
-  def __init__(self, rgbRes: str, monoRes: str, fps: int) -> None:
+  def __init__(self, rgbRes: str, monoRes: str, fps: int, mode: str) -> None:
     rgbResMap = {
         "12mp": dai.ColorCameraProperties.SensorResolution.THE_12_MP,
         "4k": dai.ColorCameraProperties.SensorResolution.THE_4_K,
@@ -20,10 +20,15 @@ class Recorder():
         "720p": dai.MonoCameraProperties.SensorResolution.THE_720_P,
         "400p": dai.MonoCameraProperties.SensorResolution.THE_400_P,
     }
+    modeMap = {
+        "density": dai.node.StereoDepth.PresetMode.HIGH_DENSITY,
+        "accuracy": dai.node.StereoDepth.PresetMode.HIGH_ACCURACY
+    }
 
     self.rgbRes = rgbResMap[rgbRes]
     self.monoRes = monoResMap[monoRes]
     self.fps = fps
+    self.mode = modeMap[mode]
 
   def __initRecord(self, subpixel: bool, extended: bool):
 
@@ -61,7 +66,7 @@ class Recorder():
     rightCam.setFps(self.fps)
 
     # Config stereo
-    stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
+    stereo.setDefaultProfilePreset(self.mode)
     stereo.setDepthAlign(dai.CameraBoardSocket.RGB)
     stereo.setLeftRightCheck(True)
     stereo.setSubpixel(subpixel)

@@ -19,6 +19,15 @@ def parseCli():
       default="output",
       help="Output directory path, default value is \"output\"")
   parser.add_argument(
+      "-m",
+      "--mode",
+      type=str,
+      choices=["density", "accuracy"],
+      metavar="",
+      default="density",
+      help="Depth mode: [\"density\", \"accuracy\"], default value is \"density\""
+  )
+  parser.add_argument(
       "-s",
       "--subpixel",
       action="store_const",
@@ -32,6 +41,13 @@ def parseCli():
       const=True,
       default=False,
       help="Enable extended disparity")
+  parser.add_argument(
+      "-f",
+      "--fps",
+      type=int,
+      metavar="",
+      default=30,
+      help="Specify FPS, default value is \"30\"")
   parser.add_argument(
       "--rgbres",
       type=str,
